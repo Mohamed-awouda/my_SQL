@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/mohamed/Downloads/my SQL/SQL_Project_data.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="1805"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="dept_emp"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="department" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="dept_emp" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE &quot;employees&quot; (
+    &quot;emp_no&quot; int   NOT NULL,
+    &quot;birt_date&quot; date   NOT NULL,
+    &quot;first_name&quot; varchar(100)   NOT NULL,
+    &quot;last_name&quot; varchar(100)   NOT NULL,
+    &quot;gender&quot; varchar   NOT NULL,
+    &quot;hire_data&quot; date   NOT NULL,
+    CONSTRAINT &quot;pk_employees&quot; PRIMARY KEY (
+        &quot;emp_no&quot;
+     )
+);
+
+CREATE TABLE &quot;department&quot; (
+    &quot;dept_no&quot; varchar   NOT NULL,
+    &quot;dept_name&quot; varchar   NOT NULL,
+    CONSTRAINT &quot;pk_department&quot; PRIMARY KEY (
+        &quot;dept_no&quot;
+     )
+);
+
+CREATE TABLE &quot;dept_manger&quot; (
+    &quot;dept_no&quot; varchar   NOT NULL,
+    &quot;emp_no&quot; INT   NOT NULL,
+    &quot;from_date&quot; date   NOT NULL,
+    &quot;to_date&quot; date   NOT NULL,
+    CONSTRAINT &quot;pk_dept_manger&quot; PRIMARY KEY (
+        &quot;dept_no&quot;
+     )
+);
+
+CREATE TABLE &quot;dept_emp&quot; (
+    &quot;emp_no&quot; INT   NOT NULL,
+    &quot;dept_no&quot; varchar   NOT NULL,
+    &quot;from_date&quot; date   NOT NULL,
+    &quot;to_date&quot; date   NOT NULL,
+    CONSTRAINT &quot;pk_dept_emp&quot; PRIMARY KEY (
+        &quot;emp_no&quot;,&quot;dept_no&quot;
+     )
+);
+
+CREATE TABLE &quot;title&quot; (
+    &quot;emp_no&quot; INT   NOT NULL,
+    &quot;title&quot; varchar   NOT NULL,
+    &quot;from_date&quot; date   NOT NULL,
+    &quot;to_date&quot; date   NOT NULL,
+    CONSTRAINT &quot;pk_title&quot; PRIMARY KEY (
+        &quot;emp_no&quot;
+     )
+);
+
+CREATE TABLE &quot;salaries&quot; (
+    &quot;emp_no&quot; INT   NOT NULL,
+    &quot;salary&quot; INT   NOT NULL,
+    &quot;from_date&quot; date   NOT NULL,
+    &quot;to_date&quot; date   NOT NULL,
+    CONSTRAINT &quot;pk_salaries&quot; PRIMARY KEY (
+        &quot;emp_no&quot;
+     )
+);
+
+</sql><sql name="SQL 3">SELECT
+e.emp_no, 
+e.last_name,
+e.first_name,
+d.dept_name
+FROM employees as e
+LEFT JOIN dept_emp as de
+on (e.emp_no = de.emp_no )
+JOIN department as d
+on (de.dept_no = d.dept_no)
+ 
+</sql><current_tab id="1"/></tab_sql></sqlb_project>
